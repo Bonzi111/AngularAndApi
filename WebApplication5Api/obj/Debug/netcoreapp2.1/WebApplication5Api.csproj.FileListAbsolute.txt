@@ -1,0 +1,14 @@
+C:\Users\shantanu.rawat\source\repos\WebApplication5\WebApplication5Api\bin\Debug\netcoreapp2.1\WebApplication5Api.deps.json
+C:\Users\shantanu.rawat\source\repos\WebApplication5\WebApplication5Api\bin\Debug\netcoreapp2.1\WebApplication5Api.runtimeconfig.json
+C:\Users\shantanu.rawat\source\repos\WebApplication5\WebApplication5Api\bin\Debug\netcoreapp2.1\WebApplication5Api.runtimeconfig.dev.json
+C:\Users\shantanu.rawat\source\repos\WebApplication5\WebApplication5Api\bin\Debug\netcoreapp2.1\WebApplication5Api.dll
+C:\Users\shantanu.rawat\source\repos\WebApplication5\WebApplication5Api\bin\Debug\netcoreapp2.1\WebApplication5Api.pdb
+C:\Users\shantanu.rawat\source\repos\WebApplication5\WebApplication5Api\obj\Debug\netcoreapp2.1\WebApplication5Api.csprojAssemblyReference.cache
+C:\Users\shantanu.rawat\source\repos\WebApplication5\WebApplication5Api\obj\Debug\netcoreapp2.1\WebApplication5Api.csproj.CoreCompileInputs.cache
+C:\Users\shantanu.rawat\source\repos\WebApplication5\WebApplication5Api\obj\Debug\netcoreapp2.1\WebApplication5Api.RazorAssemblyInfo.cache
+C:\Users\shantanu.rawat\source\repos\WebApplication5\WebApplication5Api\obj\Debug\netcoreapp2.1\WebApplication5Api.RazorAssemblyInfo.cs
+C:\Users\shantanu.rawat\source\repos\WebApplication5\WebApplication5Api\obj\Debug\netcoreapp2.1\WebApplication5Api.AssemblyInfoInputs.cache
+C:\Users\shantanu.rawat\source\repos\WebApplication5\WebApplication5Api\obj\Debug\netcoreapp2.1\WebApplication5Api.AssemblyInfo.cs
+C:\Users\shantanu.rawat\source\repos\WebApplication5\WebApplication5Api\obj\Debug\netcoreapp2.1\WebApplication5Api.RazorTargetAssemblyInfo.cache
+C:\Users\shantanu.rawat\source\repos\WebApplication5\WebApplication5Api\obj\Debug\netcoreapp2.1\WebApplication5Api.dll
+C:\Users\shantanu.rawat\source\repos\WebApplication5\WebApplication5Api\obj\Debug\netcoreapp2.1\WebApplication5Api.pdb
