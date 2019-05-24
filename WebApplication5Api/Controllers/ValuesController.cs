@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Cors;
+﻿using DataService;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Data;
-using WebApplication5Api.DataService;
+
 using WebApplication5Api.Model;
 
 namespace WebApplication5Api.Controllers
@@ -13,6 +15,7 @@ namespace WebApplication5Api.Controllers
 
     public class ValuesController : ControllerBase
     {
+        
         [HttpGet(Name = "GetCategory")]
         public DataTable GetCategory()
         {
@@ -34,7 +37,7 @@ namespace WebApplication5Api.Controllers
         [HttpPost(Name = "SaveItemInventory")]
         public void SaveItemInventory([FromBody] ItemInventory data)
         {
-            DataTable dtItemInventory = new DataHelper().PostValues("INSERT INTO ItemInventory Values('" + data.ItemQuantity + "','" + data.ItemRate + "','" + data.ItemId + "')");
+            DataTable dtItemInventory = new DataHelper().PostValues("INSERT INTO ItemInventory(ItemQuantity,ItemRate,ItemID) Values('" + data.ItemQuantity + "','" + data.ItemRate + "','" + data.ItemId + "')");
             return;
         }
         [HttpGet(Name = "GetCustomer")]
@@ -48,6 +51,23 @@ namespace WebApplication5Api.Controllers
         {
             DataTable dtUsers = new DataHelper().PostValues("INSERT INTO CustomerData Values('" + data.CustomerName + "','" + data.CustomerEmail + "')");
             return;
+        }
+        [HttpPost(Name ="SaveItemOrder")]
+        public void SaveItemOrder([FromBody] ItemOrder data)
+        {
+            DataTable dtItemOrder = new DataHelper().PostValues("INSERT INTO ItemOrder Values('" + data.ItemOrderQuantity + "','" + data.TotalAmount + "','" + data.ItemId + "','" + data.CustomerId + "')");
+            return;
+        }
+        [HttpGet(Name = "GetItemRateList")]
+        public Dictionary<int, decimal> GetItemRateList()
+        {
+            DataTable dtItemRateList = new DataHelper().GetResults("Select distinct ItemRate,ItemID from ItemInventory where ItemInventoryID in(SELECT MAX(ItemInventoryID) FROM iteminventory GROUP BY ItemID)"); Dictionary<int, decimal> rateList = new Dictionary<int, decimal>();
+
+            foreach (DataRow dtitem in dtItemRateList.Rows)
+            {
+                rateList.Add(Convert.ToInt16(dtitem["ItemID"]), Convert.ToDecimal(dtitem["ItemRate"]));
+            }
+            return rateList;
         }
     }
 }

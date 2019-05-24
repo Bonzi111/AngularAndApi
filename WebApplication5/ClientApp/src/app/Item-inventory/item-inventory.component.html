@@ -1,6 +1,6 @@
 <p *ngIf="!category"><em>Loading...</em></p>
 <h2 style="align-content:center">Add Item</h2>
-<form style="margin-top:40px;" id="ItemInventoryForm">
+<form style="margin-top:40px;" (ngSubmit)="Save()" #formData="ngForm">
   <div>
     <label>Item :</label>
     <select style="margin-left:40px;" [(ngModel)]="ItemModel.ItemId" name="ItemId">
@@ -9,11 +9,18 @@
   </div>
   <div>
     <label>Quantity:</label>
-    <input [(ngModel)]="ItemModel.itemQuantity" name="ItemQuantity" type="number" style="width:80%; margin-left:30px;" />
+    <input [(ngModel)]="ItemModel.ItemQuantity" type="number" class="form-control" name="ItemQuantity" onKeyPress="if(this.value.length==5) return false;" #ItemQuantity="ngModel" required style="width:20%; margin-left:30px;" />
+    <div [hidden]="ItemQuantity.valid||ItemQuantity.pristine" class="alert alert-danger">
+      Quantity required
+    </div>
   </div>
   <div>
     <label>Rate:</label>
-    <input [(ngModel)]="ItemModel.itemRate" name="ItemRate" type="text" style="width:80%; margin-left:30px;" />
+    <input [(ngModel)]="ItemModel.ItemRate" type="number" class="form-control" name="ItemRate" onKeyPress="if(this.value.length==5) return false;" #ItemRate="ngModel"  style="width:20%; margin-left:30px;" required/>
+    <div [hidden]="ItemRate.valid||ItemRate.pristine" class="alert alert-danger">
+      Rate required
+    </div>
   </div>
-  <input (click)="Save()" type="button" style="margin-left:110px;width:55px;" value="Save" />
+  <button type="submit" class="btn btn-success" [disabled]="!formData.form.valid">Save</button>
 </form>
+

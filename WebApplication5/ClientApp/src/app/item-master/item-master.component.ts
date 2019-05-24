@@ -18,7 +18,6 @@ export class ItemMasterComponent {
   public item: Item[];
   private _http: HttpClient;
   _baseUrl: string;
-  count: number = 0;
 
   constructor(http: HttpClient, @Inject('API_URL') apiUrl: string) {
 
@@ -32,27 +31,30 @@ export class ItemMasterComponent {
       CategoryId: "",
       ItemName: ""
     }
-    http.get<Item[]>(apiUrl + 'values/GetItemMaster').subscribe(result => {
-      this.item = result;
-      console.log(this.item);
-    }, error => console.error(error));
+    
   }
 
   Save() {
-    for (let items of this.item) {
-      if (this.CategoryModel.ItemName == items.ItemName) {
-        this.count = this.count + 1;
+    this._http.get<Item[]>('http://localhost:56910/api/Values/GetItemMaster').subscribe(result => { //to get
+      this.item = result;
+
+      var itemExist;
+      console.clear();
+      console.log(this.item);
+      this.item.map((x) => {
+        if (this.CategoryModel.ItemName == x['itemName']) {
+          itemExist = true;
+        }
+      });
+      if (itemExist == true) {
+        alert("Item already exists");
       }
-    }
-    if (this.count !== 0) {
-      this.count = 0;
-      alert("Item Name Already Exists.")
-    }
-    else {
-      this._http.post<Item>(this._baseUrl + 'values/SaveItemMaster', this.CategoryModel).subscribe(result => {
-        alert("Saved Successfully");
-      }, error => console.error(error));
-    }
+      else {
+        this._http.post<Item>(this._baseUrl + 'values/SaveItemMaster', this.CategoryModel).subscribe(result => {
+          alert("Saved Successfully");
+        }, error => console.error(error));
+      }
+    }, error => console.error(error));
   }
 }
 

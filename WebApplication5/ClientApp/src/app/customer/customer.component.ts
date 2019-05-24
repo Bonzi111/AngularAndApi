@@ -31,8 +31,25 @@ export class CustomerComponent {
   }
 
   Save() {
-    this._http.post<CustomerDetails>(this._baseUrl + 'values/SaveCustomer', this.CustomerModel).subscribe(result => {
-      alert("success");
+    this._http.get<CustomerDetails[]>('http://localhost:56910/api/Values/GetCustomer').subscribe(result => { //to get
+      this.customer = result;
+
+      var customerExist;
+      console.clear();
+      console.log(this.customer);
+      this.customer.map((x) => {
+        if (this.CustomerModel.CustomerEmail == x['customerEmail']) {
+          customerExist = true;
+        }
+      });
+      if (customerExist == true) {
+        alert("Item already exists");
+      }
+      else {
+        this._http.post<CustomerDetails>(this._baseUrl + 'values/SaveCustomer', this.CustomerModel).subscribe(result => {
+          alert("Saved Successfully");
+        }, error => console.error(error));
+      }
     }, error => console.error(error));
   }
 }

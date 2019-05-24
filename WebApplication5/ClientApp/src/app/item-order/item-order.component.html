@@ -1,0 +1,27 @@
+<h2 style="align-content:center">Item Order</h2>
+<form (ngSubmit)="save()" #formData="ngForm">
+  <div>
+    <label>Customer:</label>
+    <select style="margin-left:40px;" [(ngModel)]="ItemOrderModel.CustomerId" name="CustomerId" >
+      <option *ngFor="let cat of customer" value="{{cat.customerID}}">{{cat.customerName}}</option>
+    </select>
+  </div>
+  <div>
+    <label>Item:</label>
+    <select style="margin-left:40px;" [(ngModel)]="ItemOrderModel.ItemId" name="ItemId" (ngModelChange)="getPrice(ItemOrderModel.ItemId)">
+      <option *ngFor="let cat of item" value="{{cat.itemID}}">{{cat.itemName}}</option>
+    </select>
+  </div>
+  <div>
+    <label>Quantity:</label>
+    <input [(ngModel)]="ItemOrderModel.ItemOrderQuantity" name="ItemOrderQuantity" type="number" onKeyPress="if(this.value.length==5) return false;" class="form-control" #ItemOrderQuantity="ngModel"  required style="width:20%; margin-left:30px;" (ngModelChange)="getPrice(ItemOrderModel.ItemId)"/>
+    <div [hidden]="ItemOrderQuantity.valid||ItemOrderQuantity.pristine" class="alert alert-danger">
+      Quantity required
+    </div>
+  </div>
+  <div>
+    <label>Price:</label>
+    <input disabled [(ngModel)]="ItemOrderModel.TotalAmount" name="TotalAmount" type="text"  style="width:20%; margin-left:30px;" />
+  </div>
+  <button type="submit" class="btn btn-success" [disabled]="!formData.form.valid">Save</button>
+</form>

@@ -33,6 +33,7 @@ export class ItemInventoryComponent {
   }
 
   Save() {
+    debugger
     this._http.post<ItemInventory>(this._baseUrl + 'values/SaveItemInventory', this.ItemModel).subscribe(result => {
       alert("success");
     }, error => console.error(error));

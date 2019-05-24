@@ -1,13 +1,19 @@
 <p *ngIf="!category"><em>Loading...</em></p>
 <h2 style="align-content:center">Add Item</h2>
-<form style="margin-top:40px;" id="CustomerForm">
+<form style="margin-top:40px;" (ngSubmit)="Save()" #formData="ngForm">
   <div>
     <label>Customer Name:</label>
-    <input [(ngModel)]="CustomerModel.CustomerName" name="CustomerName" type="text" style="width:80%; margin-left:30px;" />
+    <input [(ngModel)]="CustomerModel.CustomerName" name="CustomerName" type="text" class="form-control" #CustomerName="ngModel" required style="width:20%; margin-left:30px;" />
+    <div [hidden]="CustomerName.valid||CustomerName.pristine" class="alert alert-danger">
+      Customer Name required
+    </div>
   </div>
   <div>
     <label>Customer Email:</label>
-    <input [(ngModel)]="CustomerModel.CustomerEmail" name="CustomerEmail" type="text" style="width:80%; margin-left:30px;" />
+    <input [(ngModel)]="CustomerModel.CustomerEmail" name="CustomerEmail" type="text" class="form-control" #CustomerEmail="ngModel" required style="width:20%; margin-left:30px;" />
+    <div [hidden]="CustomerEmail.valid||CustomerEmail.pristine" class="alert alert-danger">
+      Customer Email required
+    </div>
   </div>
-  <input (click)="Save()" type="button" style="margin-left:110px;width:55px;" value="Save" />
+  <button type="submit" class="btn btn-success" [disabled]="!formData.form.valid">Save</button>
 </form>

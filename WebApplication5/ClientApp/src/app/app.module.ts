@@ -12,6 +12,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ItemMasterComponent } from './item-master/item-master.component';
 import { ItemInventoryComponent } from './item-inventory/item-inventory.component';
 import { CustomerComponent } from './customer/customer.component';
+import { ItemOrderComponent } from './item-order/item-order.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { CustomerComponent } from './customer/customer.component';
     FetchDataComponent,
     ItemMasterComponent,
     ItemInventoryComponent,
-    CustomerComponent
+    CustomerComponent,
+    ItemOrderComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -35,7 +37,8 @@ import { CustomerComponent } from './customer/customer.component';
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'item-master', component: ItemMasterComponent },
       { path: 'item-inventory', component: ItemInventoryComponent },
-      { path: 'customer', component: CustomerComponent }
+      { path: 'customer', component: CustomerComponent },
+      { path: 'item-order', component: ItemOrderComponent }
     ])
   ],
   providers: [],

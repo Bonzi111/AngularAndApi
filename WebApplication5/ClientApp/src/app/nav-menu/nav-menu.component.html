@@ -42,6 +42,11 @@
                 <span class='glyphicon glyphicon-th-list'></span> Customer Data
               </a>
             </li>
+            <li [routerLinkActive]='["link-active"]'>
+              <a [routerLink]='["/item-order"]' (click)='collapse()'>
+                <span class='glyphicon glyphicon-th-list'></span> Item Order
+              </a>
+            </li>
           </ul>
         </div>
     </div>

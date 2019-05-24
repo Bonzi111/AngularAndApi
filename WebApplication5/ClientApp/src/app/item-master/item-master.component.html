@@ -1,6 +1,6 @@
 <p *ngIf="!category"><em>Loading...</em></p>
 <h2 style="align-content:center">Add Item</h2>
-<form style="margin-top:40px;" id="ItemMasterForm">
+<form (ngSubmit)="Save()" #formData="ngForm">
   <div>
     <label>Category:</label>
     <select style="margin-left:40px;" [(ngModel)]="CategoryModel.CategoryId" name="CategoryId">
@@ -9,7 +9,10 @@
   </div>
   <div>
     <label>Item:</label>
-    <input [(ngModel)]="CategoryModel.ItemName" name="ItemName" type="text" style="width:80%; margin-left:30px;" />
+    <input [(ngModel)]="CategoryModel.ItemName" name="ItemName" type="text" class="form-control" #Item="ngModel" required style="width:20%; margin-left:30px;" />
+    <div [hidden]="Item.valid||Item.pristine" class="alert alert-danger">
+      Item required
+    </div>
   </div>
-  <input (click)="Save()" type="button" style="margin-left:110px;width:55px;" value="Save" />
+  <button type="submit" class="btn btn-success" [disabled]="!formData.form.valid">Save</button>
 </form>
