@@ -1,0 +1,13 @@
+<p *ngIf="!category"><em>Loading...</em></p>
+<h2 style="align-content:center">Add Item</h2>
+<form style="margin-top:40px;" id="CustomerForm">
+  <div>
+    <label>Customer Name:</label>
+    <input [(ngModel)]="CustomerModel.CustomerName" name="CustomerName" type="text" style="width:80%; margin-left:30px;" />
+  </div>
+  <div>
+    <label>Customer Email:</label>
+    <input [(ngModel)]="CustomerModel.CustomerEmail" name="CustomerEmail" type="text" style="width:80%; margin-left:30px;" />
+  </div>
+  <input (click)="Save()" type="button" style="margin-left:110px;width:55px;" value="Save" />
+</form>

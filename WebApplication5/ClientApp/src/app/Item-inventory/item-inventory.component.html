@@ -1,0 +1,19 @@
+<p *ngIf="!category"><em>Loading...</em></p>
+<h2 style="align-content:center">Add Item</h2>
+<form style="margin-top:40px;" id="ItemInventoryForm">
+  <div>
+    <label>Item :</label>
+    <select style="margin-left:40px;" [(ngModel)]="ItemModel.ItemId" name="ItemId">
+      <option *ngFor="let cat of item" value="{{cat.itemID}}">{{cat.itemName}}</option>
+    </select>
+  </div>
+  <div>
+    <label>Quantity:</label>
+    <input [(ngModel)]="ItemModel.itemQuantity" name="ItemQuantity" type="number" style="width:80%; margin-left:30px;" />
+  </div>
+  <div>
+    <label>Rate:</label>
+    <input [(ngModel)]="ItemModel.itemRate" name="ItemRate" type="text" style="width:80%; margin-left:30px;" />
+  </div>
+  <input (click)="Save()" type="button" style="margin-left:110px;width:55px;" value="Save" />
+</form>
